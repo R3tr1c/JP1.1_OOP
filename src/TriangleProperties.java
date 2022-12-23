@@ -8,12 +8,12 @@ public class TriangleProperties {
     public float[] GetTriangleProperties_Heights(){
         float[] TriangleHeightsLength = { 0, 0, 0 };
 
-        float p = (TriangleSidesLength[0] + TriangleSidesLength[1] + TriangleSidesLength[2]) / 2;
+        float HalfPerimeter = (TriangleSidesLength[0] + TriangleSidesLength[1] + TriangleSidesLength[2]) / 2;
 
-        float universal_count_part = (float) Math.sqrt( p * (p - TriangleSidesLength[0]) * (p - TriangleSidesLength[1]) * (p - TriangleSidesLength[2]));
+        float UniversalCountPart = (float) Math.sqrt( HalfPerimeter * (HalfPerimeter - TriangleSidesLength[0]) * (HalfPerimeter - TriangleSidesLength[1]) * (HalfPerimeter - TriangleSidesLength[2]));
 
         for (int i = 0; i < 3; i++){
-            TriangleHeightsLength[i] = (2 / TriangleSidesLength[i]) * universal_count_part;
+            TriangleHeightsLength[i] = (2 / TriangleSidesLength[i]) * UniversalCountPart;
         }
 
         return TriangleHeightsLength;
