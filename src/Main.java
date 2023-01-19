@@ -2,25 +2,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        final char[] TriangleSidesName = {'a', 'b', 'c'};
-        float[] TriangleSidesLength = { 0, 0, 0 },
-                TriangleHeightsLength = { 0, 0, 0 };
+        TriangleCustom triangle = new TriangleCustom( getTriangleSideLength("a"),
+                                                      getTriangleSideLength("b"),
+                                                      getTriangleSideLength("c"));
 
-        Scanner input_scan = new Scanner(System.in);
+        float heightToSideALength = triangle.getTriangleHeightLength(triangle.getSideALength()),
+              heightToSideBLength = triangle.getTriangleHeightLength(triangle.getSideBLength()),
+              heightToSideCLength = triangle.getTriangleHeightLength(triangle.getSideCLength());
 
-        System.out.println("\nВведите стороны треугольника:");
-        for (int i = 0; i < 3; i++){
-            System.out.printf("%s = ", TriangleSidesName[i]);
-            TriangleSidesLength[i] = input_scan.nextFloat();
-        }
-        TriangleProperties Triangle = new TriangleProperties(TriangleSidesLength);
+        printTriangleHeight("a", heightToSideALength);
+        printTriangleHeight("b", heightToSideBLength);
+        printTriangleHeight("c", heightToSideCLength);
 
-        TriangleHeightsLength = Triangle.GetTriangleProperties_Heights();
+    }
+    private static float getTriangleSideLength(String sideName) {
+        System.out.printf("Длина стороны %s: ", sideName);
+        Scanner inputScan = new Scanner(System.in);
+        return  inputScan.nextFloat();
+    }
 
-        System.out.println("\nВысоты треугольника: ");
-
-        for (int i = 0; i < 3; i++){
-            System.out.printf("h(%s) = %f \n", TriangleSidesName[i],  TriangleHeightsLength[i]);
-        }
+    private static void printTriangleHeight(String toSideName, float heightLength){
+        System.out.printf("\nВысота треугольника к стороне %s: %.2f;", toSideName, heightLength);
     }
 }
